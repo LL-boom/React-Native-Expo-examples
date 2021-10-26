@@ -1,85 +1,76 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useState, useRef, useCallback } from "react";
-import { StyleSheet, Text, View, SafeAreaView, Platform } from 'react-native';
-import Constants from 'expo-constants';
-import { displayTime } from "./day1/util";
-import Control from "./day1/Control";
-import Result from "./day1/Result";
+import React, { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  SafeAreaView,
+  ScrollView,
+  View,
+  BackHandler,
+} from "react-native";
+import { Text, ListItem } from "react-native-elements";
+//https://docs.expo.dev/versions/latest/sdk/constants/
+import Constants from "expo-constants";
+import { EXAMPLES_LIST } from "./examples_list";
 
-export default function StopWatch() {
-  //state
-  // https://reactnative.cn/docs/intro-react#state-%E7%8A%B6%E6%80%81
-  const [time,setTime] = useState(0);
-  const [isRunning, setRunning] = useState(false);
-  const [results, setResults] = useState([]);
-  const timer = useRef(null);
+export default function APP(){
+    const[exampleIndex , setExampleIndex] = useState(null);
 
-  const handleLeftButtonPress = useCallback(()=>{
-    if(isRunning){
-      setResults((previousResults) => [time,...previousResults]);
-    }else{
-      setResults([]);
-      setTime(0);
-    }
-  },[isRunning, time]);
+    useEffect(()=>{
+        //点击返回按键
+        const backAction = () => {
+            //在example中，返回列表
+            if (exampleIndex !== null){
+                setExampleIndex(null);
+            }
+            else{
+                //在列表页，退出APP
+                BackHandler.exitApp()
+            }
+            return true;
+        };
+        //API:BackHandler  仅适用于Android
+        const backHandler = BackHandler.addEventListener(
+            "hardwareBackPress",
+            backAction
+        );
 
-  const handleRightButtonPress = useCallback(()=>{
-    if(!isRunning){
-      const interval = setInterval(() => {
-        setTime((previousTime) => previousTime + 1);
-      }, 10);
+        return () => backHandler.remove();
+    },[exampleIndex]);
 
-      timer.current = interval;
-    }else {
-      clearInterval(timer.current);
-    }
+    if(exampleIndex !== null) return EXAMPLES_LIST[exampleIndex].component;
 
-    setRunning((previousState) => !previousState);
-  },[isRunning])
+    return(
+        <SafeAreaView style = {styles.container}>
+        <Text h4 style = {styles.heading}>
+            React Native Expo Examples List
+        </Text>
 
-  return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar style="auto" />
-    <View style={styles.display}>
-      <Text style={styles.displayText}>{displayTime(time)}</Text>
-    </View>
+        <ScrollView>
+            {EXAMPLES_LIST.map((l,i) => (
+                <ListItem key={i} bottomDivider onPress={() => setExampleIndex(i)}>
+                    <View>
+                        <Text> Day {l.days}</Text>
+                    </View>
 
-    <View style={styles.control}>
-    <Control
-    isRunning = {isRunning}
-    handleLeftButtonPress = {handleLeftButtonPress}
-    handleRightButtonPress = {handleRightButtonPress}
-    />
-    </View>
-
-    <View style={styles.result}>
-        <Result results={results} />
-      </View>
+                <ListItem.Content>
+                    <ListItem.Title style={styles.title}>{l.name}</ListItem.Title>
+                    </ListItem.Content>
+                </ListItem>
+            ))}
+      </ScrollView>
     </SafeAreaView>
-  );
+    );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
     paddingTop: Constants.statusBarHeight,
   },
-  display:{
-    flex:3/5,
-    justifyContent:'center',
-    alignItems:'center',
+  heading: {
+    textAlign: "center",
+    padding: 12,
   },
-  displayText:{
-    color: "#fff",
-    fontSize: 70,
-    fontWeight: "200",
-    fontFamily: Platform.OS === "ios" ? "Helvetica Neue" : null,
+  title: {
+    fontWeight: "bold",
   },
-  control: {
-    height: 70,
-    flexDirection: "row",
-    justifyContent: "space-around",
-  },
-  result: { flex: 2 / 5 },
 });
