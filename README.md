@@ -1,36 +1,30 @@
 # React-Native-Expo-demos
 
 #### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
 
-#### 软件架构
-软件架构说明
+学习实现一些基于React-Native 的 Expo-demos
+
+灵感来源：
+
+1. https://github.com/fangwei716/30-days-of-react-native
+2. https://github.com/robinhuy/react-native-expo-examples
 
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  下载 Expo Go ，官网有下载链接：https://docs.expo.dev/get-started/installation/
+2.  `npm install`
+3.  `expo start`
 
-#### 使用说明
+#### 内容
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
+##### 1. day 1  类似ios的计时器
+<img src="https://static.dingtalk.com/media/lALPDh0cQ6XTaMfNBwDNAzw_828_1792.png_720x720q90g.jpg?bizType=im" alt="img" style="zoom:50%;" />     <img src="https://static.dingtalk.com/media/lALPDgQ9zSRl6MbNBwDNAzw_828_1792.png_720x720q90g.jpg?bizType=im" alt="img" style="zoom:50%;" />    
 
 
+##### 2.day 2  登录页面
+
+ <img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20211026174406111.png" alt="image-20211026174406111" style="zoom: 25%;" />
 
 
-#### 特技
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
