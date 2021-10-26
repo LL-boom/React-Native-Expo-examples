@@ -24,7 +24,7 @@
 
 ##### 2.day 2  登录页面
 
- <img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20211026181907459.png" alt="image-20211026181907459" style="zoom:25%;" />
+ <img src="https://img-blog.csdnimg.cn/5ddf43b3cce14d54862b5e72576158eb.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6L-b5Ye755qE5aSn5a2m54mb54mb,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img" style="zoom:25%;" />
 
 
 
